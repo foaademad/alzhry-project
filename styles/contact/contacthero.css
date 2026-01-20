@@ -1,0 +1,180 @@
+.contact_hero{
+  width:100%;
+  padding:120px 0;
+  background: var(--bg);
+  position:relative;
+  overflow:hidden;
+  direction: rtl;
+}
+
+/* إضاءات ديكورية */
+.contact_hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 20% 30%, #6366f12b, transparent 70%),
+              radial-gradient(circle at 80% 70%, #22d3ee25, transparent 70%);
+  filter: blur(10px);
+}
+
+.shape{
+  position:absolute;
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background: linear-gradient(135deg,var(--primary),#6d83ff);
+  opacity: .18;
+  filter: blur(1px);
+  animation: float 9s infinite ease-in-out alternate;
+}
+
+.s1{ top:12%; right:10%; animation-duration:7s; }
+.s2{ bottom:10%; left:15%; animation-duration:9s; }
+.s3{ top:65%; right:45%; animation-duration:6s; }
+
+@keyframes float{
+  to{ transform: translateY(-25px) translateX(20px); }
+}
+
+/* Container */
+.contact_container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 25px;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:60px;
+  position:relative;
+  z-index:3;
+}
+
+/* Title */
+.contact_title{
+  font-size:36px;
+  color:var(--text);
+  font-weight:900;
+  margin-bottom:10px;
+  position:relative;
+  display:inline-block;
+}
+
+.contact_title::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-6px;
+  width:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--primary),#6c7bff);
+  border-radius:2px;
+  animation: underlineMove 2s infinite ease-in-out;
+}
+
+@keyframes underlineMove{
+  0%{ width:0; }
+  50%{ width:140px; }
+  100%{ width:0; }
+}
+
+/* Subtitle */
+.contact_subtitle{
+  font-size:22px;
+  font-weight:800;
+  color:var(--primary);
+  margin-bottom:14px;
+}
+
+/* Text */
+.contact_text{
+  font-size:17px;
+  color:var(--secondary-text);
+  line-height:1.9;
+  max-width:500px;
+}
+
+/* Image */
+.contact_image_area{
+  text-align:center;
+}
+
+.contact_icon{
+  border-radius:25px;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  animation: iconFloat 6s infinite ease-in-out alternate;
+}
+
+@keyframes iconFloat{
+  to{ transform: translateY(-20px) translateX(15px); } /* حركة الصورة */
+}
+
+/* Fade */
+.fade_in{
+  opacity:0;
+  transform:translateY(30px);
+  animation: fadeShow .9s forwards ease;
+}
+
+@keyframes fadeShow{
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@media(max-width:900px){
+
+  /* Container يتحول عمودي */
+  .contact_container{
+    grid-template-columns:1fr;
+    gap:40px;
+    text-align:center;
+    padding:0 15px;
+  }
+
+  /* العنوان والخط المتحرك */
+  .contact_title{
+    font-size:28px;
+  }
+
+  .contact_title::after{
+    right:50%;
+    transform:translateX(50%);
+    width:100px; /* عشان يبقى مناسب للشاشة */
+  }
+
+  /* Subtitle */
+  .contact_subtitle{
+    font-size:18px;
+  }
+
+  /* النص */
+  .contact_text{
+    font-size:16px;
+    line-height:1.7;
+    max-width:90%;
+    margin:auto;
+  }
+
+  /* الصور أو الأيقونات */
+  .contact_icon{
+    width: 200px;  /* حجم أصغر للموبايل */
+    height: auto;
+    animation: iconFloatMobile 6s infinite ease-in-out alternate;
+  }
+
+  /* الأشكال العائمة أصغر أو تخفى */
+  .shape{
+    width:80px;
+    height:80px;
+    opacity:0.12;
+  }
+
+  .s3{
+    display:none; /* إخفاء الشكل الثالث لتخفيف الزحمة */
+  }
+}
+
+/* keyframes للأيقونات على الموبايل لتخفيف الحركة */
+@keyframes iconFloatMobile{
+  0%{ transform: translateY(0) translateX(0); }
+  50%{ transform: translateY(-10px) translateX(8px); }
+  100%{ transform: translateY(0) translateX(0); }
+}

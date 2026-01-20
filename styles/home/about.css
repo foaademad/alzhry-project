@@ -1,0 +1,193 @@
+/* ---------- HERO SECTION ---------- */
+.parallax_section {
+  width: 100%;
+  min-height: 650px;
+  padding: 110px 6%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 70px;
+  position: relative;
+  background: linear-gradient(125deg, var(--bg), rgba(24,34,68,0.2));
+  overflow: hidden;
+}
+
+.parallax_section.rtl { 
+  direction: rtl; 
+  grid-template-columns: 1fr 1.2fr; 
+  text-align: right; 
+}
+
+/* Floating Shapes */
+.floating_shape { 
+  position: absolute; 
+  width: 180px; 
+  height: 180px; 
+  border-radius: 50%; 
+  filter: blur(10px); 
+  opacity: 0.25; 
+  animation: float 8s infinite ease-in-out alternate; 
+}
+
+.shape1 { background: var(--primary); top: 10%; left: 5%; animation-duration: 9s; }
+.shape2 { background: #22d3ee; bottom: 12%; right: 10%; animation-duration: 10s; }
+.shape3 { background: #f59e0b; top: 60%; left: 40%; animation-duration: 7s; }
+
+@keyframes float {
+  to { transform: translateY(-40px) scale(1.15); }
+}
+
+/* Text Box */
+.text_box {
+  position: relative;
+  z-index: 3;
+  animation: slideIn 1s ease forwards;
+  opacity: 0;
+}
+
+.text_box .sub {
+  font-size: 20px;
+  color: var(--primary);
+  margin-bottom: 15px;
+  animation: slideInDelay 1.2s ease forwards;
+  opacity: 0;
+}
+
+.text_box h2 {
+  font-size: 35px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  animation: slideInDelay 1.4s ease forwards;
+  opacity: 0;
+}
+
+.text_box h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), #5b6bff);
+  border-radius: 2px;
+  animation: underlineGrow 1s ease forwards 1.5s;
+}
+
+.text_box p {
+  font-size: 18px;
+  color: var(--secondary-text);
+  line-height: 2;
+  margin-bottom: 35px;
+  animation: slideInDelay 1.6s ease forwards;
+  opacity: 0;
+}
+
+/* CTA Button */
+.cta_btn {
+  padding: 13px 40px;
+  border-radius: 40px;
+  border: none;
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--primary), #5b6bff);
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(99,102,241,.45);
+  cursor: pointer;
+  transition: all .3s ease;
+  animation: slideInDelay 1.8s ease forwards;
+  opacity: 0;
+}
+
+.cta_btn:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+/* Image Box */
+.image_box {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  animation: imageFloat 6s infinite ease-in-out alternate;
+}
+
+.image_box svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.image_box svg rect {
+  fill: none;
+  stroke: url(#gradient);
+  stroke-width: 4;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: drawBorder 3s linear forwards;
+  stroke-linecap: round;
+}
+
+/* Animations */
+@keyframes drawBorder {
+  0% { stroke-dashoffset: 1400; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInDelay {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imageFloat {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes underlineGrow {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:950px){
+  .parallax_section { 
+    grid-template-columns: 1fr; 
+    padding: 60px 20px; 
+    min-height: auto;
+  }
+
+  .text_box {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .text_box h2 { font-size: 28px; }
+  .text_box .sub { font-size: 16px; }
+  .text_box p { font-size: 15px; line-height: 1.6; }
+
+  .cta_btn {
+    font-size: 16px;
+    padding: 12px 30px;
+  }
+
+  .image_box {
+    height: 280px;
+    border-radius: 20px;
+  }
+
+  .floating_shape { display: none; } /* لإخفاء الخلفيات على الموبايل */
+}

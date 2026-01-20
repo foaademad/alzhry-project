@@ -1,0 +1,56 @@
+.clients_section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.clients_title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: var(--text);
+}
+
+/* Container الماركيه */
+.clients_marquee {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Track اللوجوه */
+.clients_track {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  animation: marqueeLoop 20s linear infinite;
+}
+
+/* كل لوجو */
+.client_logo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* حركة الماركيه */
+@keyframes marqueeLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* يتحرك نصف المحتوى (لأننا كررنا اللوجوه) */
+  }
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .clients_track {
+    gap: 20px;
+    animation-duration: 12s;
+  }
+
+  .client_logo img {
+    width: 120px !important;
+    height: auto !important;
+  }
+}

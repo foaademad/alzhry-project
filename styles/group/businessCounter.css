@@ -1,0 +1,107 @@
+.neon_business_section{
+  padding:80px 20px; /* تصغير البادينج للموبايل */
+  background: var(--bg);
+  text-align:center;
+}
+
+.neon_title{
+  font-size:32px; /* تصغير العنوان على الموبايل */
+  font-weight:900;
+  color:var(--text);
+  position:relative;
+  display:inline-block;
+  margin-bottom:40px;
+}
+
+/* الخط المتحرك تحت العنوان */
+.neon_title::after{
+  content:"";
+  position:absolute;
+  left:50%; /* جعل الخط في الوسط */
+  transform: translateX(-50%);
+  bottom:-8px;
+  height:4px;
+  width:0%;
+  background: linear-gradient(90deg, var(--primary), #5b6bff);
+  border-radius:2px;
+  animation: underlineMove 2s infinite ease-in-out;
+}
+
+@keyframes underlineMove{
+  0%{ width:0; }
+  50%{ width:100%; }
+  100%{ width:0; }
+}
+
+.counters_container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); /* جعلها أكثر مرونة */
+  gap:30px;
+}
+
+.counter_card{
+  background: var(--card); 
+  border-radius:20px;
+  padding:20px 15px; /* تصغير البادينج */
+  box-shadow: 0 0 30px rgba(0,0,0,0.15);
+  transition:.3s;
+  color:#fff;
+}
+
+.counter_card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 0 40px #6c7bff, 0 0 60px #00e5ff;
+}
+
+.counter_icon{
+  font-size:36px; /* تصغير الأيقونة */
+  background: linear-gradient(135deg, var(--primary), #5b6bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom:12px;
+  text-shadow: 0 0 6px #6c7bff, 0 0 12px #00e5ff;
+  animation: glowPulse 2s infinite alternate;
+}
+
+.counter_number{
+  font-size:28px; /* تصغير الرقم */
+  font-weight:800;
+  color:#fff;
+  text-shadow: 0 0 8px #6c7bff, 0 0 16px #00e5ff;
+  margin-bottom:6px;
+}
+
+.counter_title{
+  font-size:15px; /* تصغير العنوان */
+  color:var(--secondary-text);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .counters_container{
+    grid-template-columns:1fr; /* عرض كامل للعمود الواحد */
+    gap:20px;
+  }
+
+  .neon_title{
+    font-size:28px;
+    margin-bottom:30px;
+  }
+
+  .counter_card{
+    padding:15px 10px;
+  }
+
+  .counter_icon{
+    font-size:32px;
+    margin-bottom:10px;
+  }
+
+  .counter_number{
+    font-size:24px;
+  }
+
+  .counter_title{
+    font-size:14px;
+  }
+}

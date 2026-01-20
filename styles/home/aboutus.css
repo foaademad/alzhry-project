@@ -1,0 +1,217 @@
+/* ================= PARALLAX ABOUT ================= */
+
+.aboutParallax {
+  width: 100%;
+  min-height: 650px;
+  padding: 110px 6%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 70px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(125deg, var(--bg), rgba(24,34,68,0.2));
+}
+
+.aboutParallax--rtl {
+  direction: rtl;
+  grid-template-columns: 1fr 1.2fr;
+  text-align: right;
+}
+
+/* ---------- Shapes ---------- */
+.aboutParallax__shape {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  filter: blur(10px);
+  opacity: 0.25;
+  animation: floatShape 8s infinite ease-in-out alternate;
+}
+
+.aboutParallax__shape--one {
+  background: var(--primary);
+  top: 10%;
+  left: 5%;
+}
+
+.aboutParallax__shape--two {
+  background: #22d3ee;
+  bottom: 12%;
+  right: 10%;
+  animation-duration: 10s;
+}
+
+.aboutParallax__shape--three {
+  background: #f59e0b;
+  top: 60%;
+  left: 40%;
+  animation-duration: 7s;
+}
+
+/* ---------- Content ---------- */
+.aboutParallax__content {
+  position: relative;
+  z-index: 2;
+  animation: fadeSlide 1s ease forwards;
+  opacity: 0;
+}
+
+.aboutParallax__subtitle {
+  font-size: 18px;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.aboutParallax__title {
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.aboutParallax__title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), #5b6bff);
+  border-radius: 2px;
+}
+
+.aboutParallax__text {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--secondary-text);
+  margin-bottom: 30px;
+}
+
+/* ---------- Button ---------- */
+.aboutParallax__btn {
+  padding: 14px 40px;
+  font-size: 17px;
+  border-radius: 40px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary), #5b6bff);
+  box-shadow: 0 18px 40px rgba(99,102,241,.45);
+  transition: 0.3s;
+}
+
+.aboutParallax__btn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ---------- Image ---------- */
+.aboutParallax__image {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  animation: imageFloat 6s infinite ease-in-out alternate;
+}
+
+.aboutParallax__border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.aboutParallax__border rect {
+  fill: none;
+  stroke-width: 4;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: drawBorder 3s linear forwards;
+}
+
+/* ---------- Animations ---------- */
+@keyframes floatShape {
+  to { transform: translateY(-40px) scale(1.15); }
+}
+
+@keyframes imageFloat {
+  50% { transform: translateY(-15px) scale(1.02); }
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawBorder {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 900px) {
+  .aboutParallax {
+    grid-template-columns: 1fr;
+    padding: 60px 18px;
+    text-align: center;
+  }
+
+  .aboutParallax--rtl {
+    text-align: center;
+  }
+
+  .aboutParallax__title::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .aboutParallax__image {
+    height: 280px;
+  }
+
+  .aboutParallax__btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .aboutParallax__shape--three {
+    display: none;
+  }
+}
+/* ---------- Mobile: Hide Image ---------- */
+@media (max-width: 900px) {
+
+  /* إلغاء الصورة بالكامل */
+  .aboutParallax__image {
+    display: none;
+  }
+
+  /* خلى المحتوى ياخد العرض كله */
+  .aboutParallax {
+    grid-template-columns: 1fr;
+  }
+
+  /* وسّع النص شوية */
+  .aboutParallax__content {
+    max-width: 100%;
+  }
+
+  /* خلي العنوان أوضح */
+  .aboutParallax__title {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+
+  .aboutParallax__text {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  /* الزر مريح للمس */
+  .aboutParallax__btn {
+    width: 100%;
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,162 @@
+.hiring_hero {
+  width: 100%;
+  padding: 120px 0;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  direction: rtl;
+}
+
+/* إضاءات ديكورية */
+.hiring_hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, #6366f12b, transparent 70%),
+    radial-gradient(circle at 80% 70%, #22d3ee25, transparent 70%);
+  filter: blur(10px);
+}
+
+/* أشكال عائمة */
+.shape {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #6d83ff);
+  opacity: 0.18;
+  filter: blur(1px);
+  animation: float 9s infinite ease-in-out alternate;
+}
+
+.s1 { top: 12%; right: 10%; animation-duration: 7s; }
+.s2 { bottom: 10%; left: 15%; animation-duration: 9s; }
+.s3 { top: 65%; right: 45%; animation-duration: 6s; }
+
+@keyframes float {
+  to { transform: translateY(-25px) translateX(20px); }
+}
+
+/* Container */
+.hiring_container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 25px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Title */
+.hiring_title {
+  font-size: 36px;
+  color: var(--text);
+  font-weight: 900;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.hiring_title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;                 /* الخط في النص */
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), #6c7bff);
+  border-radius: 2px;
+  animation: underlineMove 2s infinite ease-in-out;
+}
+
+@keyframes underlineMove {
+  0% { width: 0; }
+  50% { width: 140px; }
+  100% { width: 0; }
+}
+
+/* Subtitle */
+.hiring_subtitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+/* Text */
+.hiring_text {
+  font-size: 17px;
+  color: var(--secondary-text);
+  line-height: 1.9;
+  max-width: 500px;
+}
+
+/* Image */
+.hiring_image_area {
+  text-align: center;
+}
+
+.hiring_eagle {
+  border-radius: 25px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.25);
+  animation: eagleFloat 6s infinite ease-in-out alternate;
+}
+
+@keyframes eagleFloat {
+  to { transform: translateY(-20px) translateX(15px); }
+}
+
+/* Fade */
+.fade_in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeShow 0.9s forwards ease;
+}
+
+@keyframes fadeShow {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive - الموبايل */
+@media(max-width: 900px) {
+  .hiring_container {
+    grid-template-columns: 1fr;  /* عمودي */
+    text-align: center;
+    gap: 40px;
+    padding: 0 15px;
+  }
+
+  .hiring_title {
+    font-size: 28px;           /* أصغر على الموبايل */
+  }
+
+  .hiring_title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hiring_subtitle {
+    font-size: 18px;
+  }
+
+  .hiring_text {
+    font-size: 16px;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .hiring_eagle {
+     width: 85%;               /* كبرت الصورة */
+    max-width: 350px; 
+    height: auto;
+    margin: auto;
+  }
+
+  /* إخفاء بعض الأشكال الكبيرة لتحسين الأداء */
+  .s3 { display: none; }
+}

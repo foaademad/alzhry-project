@@ -1,0 +1,161 @@
+/* ================== FOOTER ================== */
+.footer {
+  background: #f8f9fa; /* أبيض رمادي هادي */
+  color: #333; /* نص غامق */
+  padding: 60px 20px 25px;
+  font-family: 'Arial', sans-serif;
+  transition: all .3s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #e0e0e0; /* خط خفيف للفصل عن الصفحة */
+}
+
+/* 🌟 حركة خلفية خفيفة */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 45%);
+  animation: moveBg 10s infinite alternate ease-in-out;
+  opacity: 0.3; /* أخف لتناسب الخلفية الفاتحة */
+}
+
+@keyframes moveBg {
+  from { transform: translateY(-10px);}
+  to { transform: translateY(10px);}
+}
+
+/* ================== ترتيب ================== */
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================== عنوان + خط متحرك ================== */
+.footer-section h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  position: relative;
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp .9s ease forwards;
+  /* أزرق هادي وراقي */
+}
+
+/* خط متحرك */
+.footer-section h3::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: #1e40af; /* أزرق هادي */
+  border-radius: 20px;
+  transition: .4s ease;
+}
+
+.footer-section:hover h3::after {
+  width: 100%;
+}
+
+/* ================== نصوص + Hover Animation ================== */
+.footer-section p,
+.footer-section li,
+.footer-section a {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555; /* لون النصوص مناسب للخلفية الفاتحة */
+  text-decoration: none;
+  opacity: .9;
+  transition: all .3s ease;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.footer-section li:hover {
+  transform: translateX(-5px);
+  opacity: 1;
+  color: #1e40af; /* لون عند hover */
+}
+
+.footer-section a:hover {
+  color: #1e40af; /* لون عند hover */
+  text-decoration: underline;
+}
+
+/* ================== تأثير دخول السكاشن ================== */
+.footer-section {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.footer-section:nth-child(1){ animation-delay: .2s; }
+.footer-section:nth-child(2){ animation-delay: .4s; }
+.footer-section:nth-child(3){ animation-delay: .6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================== Copy Area ================== */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+  opacity: 0;
+  animation: fadeIn .8s ease forwards 1.2s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ================== Dark Mode ================== */
+.dark .footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e8ecff;
+}
+
+.dark .footer-section h3::after {
+  background: #7aa2ff;
+}
+
+.dark .footer-section p,
+.dark .footer-section li,
+.dark .footer-section a {
+  color: #e8ecff;
+}
+
+.dark .footer-section li:hover,
+.dark .footer-section a:hover {
+  color: #7aa2ff;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

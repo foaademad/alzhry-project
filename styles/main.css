@@ -1,0 +1,52 @@
+@import url("fonts.css");
+@import url("base.css");
+
+@import url("pages/landing.css");
+.theme_toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  background: linear-gradient(135deg, #2b4eff, #6e9cff);
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all .3s ease;
+}
+
+.theme_toggle:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.dark .theme_toggle {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+}
+/* Light mode */
+:root{
+  --nav-bg: rgba(255,255,255,0.95);
+  --nav-text:#1d2b53;
+  --nav-shadow: rgba(0,0,0,.07);
+  --nav-link:#222;
+  --nav-hover:#2b4eff;
+  --mobile-bg: rgba(255,255,255,0.98);
+}
+
+/* Dark mode */
+.dark{
+  --nav-bg: rgba(10,15,28,0.85);
+  --nav-text:#e8ecff;
+  --nav-shadow: rgba(0,0,0,.4);
+  --nav-link:#d7ddff;
+  --nav-hover:#7aa2ff;
+  --mobile-bg: rgba(14,22,45,0.95);
+}
+
+
+
+

@@ -1,0 +1,86 @@
+.about-ceo-final {
+  width: 100%;
+  padding: 90px 0;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  position: relative;
+}
+
+.about-ceo-final .container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 25px;
+}
+
+.about-ceo-final .title {
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  display: inline-block;
+  position: relative;
+}
+
+.about-ceo-final .underline {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), #5b6bff);
+  margin-bottom: 35px;
+  animation: underlineMove 2s infinite alternate;
+}
+
+@keyframes underlineMove {
+  from { width: 80px; }
+  to { width: 150px; }
+}
+
+.about-ceo-final p {
+  font-size: 17px;
+  line-height: 1.9;
+  margin-bottom: 25px;
+  color: var(--secondary-text);
+}
+
+.about-ceo-final blockquote {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--primary);
+  border-left: 4px solid var(--primary);
+  padding: 12px 20px;
+  margin: 30px 0;
+  background: var(--card);
+  border-radius: 12px;
+}
+
+/* توقيع الدكتور */
+.about-ceo-final .ceo-sign {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: right;
+  margin-top: 20px;
+}
+
+/* Fade-in animation */
+.fade_in {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeShow 0.8s forwards ease;
+}
+
+.about-ceo-final p.fade_in:nth-child(2){ animation-delay:.2s; }
+.about-ceo-final p.fade_in:nth-child(3){ animation-delay:.4s; }
+.about-ceo-final p.fade_in:nth-child(4){ animation-delay:.6s; }
+.about-ceo-final blockquote.fade_in{ animation-delay:.8s; }
+.about-ceo-final .ceo-sign.fade_in{ animation-delay:1s; }
+
+@keyframes fadeShow {
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .about-ceo-final .title { text-align:center; font-size:28px; }
+  .about-ceo-final .underline { margin:15px auto 30px auto; }
+  .about-ceo-final p, .about-ceo-final blockquote, .about-ceo-final .ceo-sign { text-align:center; }
+}

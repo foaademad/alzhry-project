@@ -1,0 +1,127 @@
+.choose_us_section{
+  padding:100px 100px;
+  background: var(--bg);
+  text-align: center;
+}
+
+/* العنوان */
+.choose_us_title{
+  font-size:36px;
+  font-weight:900;
+  color:var(--text);
+  position:relative;
+  display:inline-block;
+  margin-bottom:50px;
+}
+
+/* الخط المتحرك تحت العنوان */
+.choose_us_title::after{
+  content:"";
+  position:absolute;
+  left:50%;                 /* في الوسط */
+  bottom:-8px;
+  transform: translateX(-50%); /* نحركه نصف عرضه لليسار ليصبح مركزي */
+  height:4px;
+  width:0%;
+  background: linear-gradient(90deg,#3a7bd5);
+  border-radius:2px;
+  animation: underlineMove 2s infinite ease-in-out;
+}
+
+@keyframes underlineMove{
+  0%{ width:0; }
+  50%{ width:100%; }
+  100%{ width:0; }
+}
+
+/* Tabs */
+.tabs_container{
+  max-width:900px;
+  margin:auto;
+}
+
+.tab_card{
+  margin-bottom:20px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  background: var(--card);
+}
+
+.tab_header{
+  width:100%;
+  text-align:right;
+  font-size:20px;
+  font-weight:700;
+  padding:18px 25px;
+  background: linear-gradient(90deg,#1a1a1a,#222);
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  border:none;
+  outline:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  transition:.3s;
+}
+
+.tab_header:hover{
+  background: linear-gradient(90deg,#6c7bff);
+  color:#fff;
+}
+
+.arrow{
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+  transform: rotate(45deg);
+  transition:.3s;
+}
+
+.arrow.down{
+  transform: rotate(-135deg);
+}
+
+.tab_content{
+  max-height:0;
+  overflow:hidden;
+  padding:0 25px;
+  transition: all 0.4s ease;
+  background: var(--card);
+}
+
+.tab_content.open{
+  padding:18px 25px;
+  max-height:500px;
+  animation: fadeInContent .5s ease forwards;
+}
+
+@keyframes fadeInContent{
+  from{ opacity:0; transform:translateY(10px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ======== Responsive ======== */
+@media(max-width:900px){
+  .choose_us_section{
+    padding:60px 20px; /* أقل البادينج للموبايل */
+  }
+
+  .choose_us_title{
+    font-size:28px;
+    text-align:center; /* العنوان في الوسط */
+  }
+
+  .tab_header{
+    justify-content:center; /* تبسيط للعرض الصغير */
+    font-size:18px;
+  }
+
+  .tab_content.open{
+    text-align:right; /* محتوى التاب يبقى على اليمين */
+    padding:12px 18px;
+  }
+}

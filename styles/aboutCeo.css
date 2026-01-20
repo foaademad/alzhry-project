@@ -1,0 +1,82 @@
+.about-ceo {
+  width: 100%;
+  padding: 100px 20px;
+ 
+  color: #fff;
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+}
+
+.about-ceo-container {
+  max-width: 900px;
+  text-align: right;
+}
+
+.about-ceo-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.underline {
+  width: 80px;
+  height: 4px;
+  background: #4facfe; /* خط تحت العنوان */
+  margin-bottom: 30px;
+  border-radius: 2px;
+}
+
+.about-ceo-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #d6d6d6;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.about-ceo-text.delay1 {
+  animation-delay: 0.3s;
+}
+
+.about-ceo-text.delay2 {
+  animation-delay: 0.6s;
+}
+
+.about-ceo-text.delay3 {
+  animation-delay: 0.9s;
+}
+
+/* انيميشن fade in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* متجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .about-ceo-container {
+    text-align: center;
+  }
+
+  .about-ceo-title {
+    font-size: 28px;
+  }
+
+  .about-ceo-text {
+    font-size: 16px;
+  }
+
+  .underline {
+    margin: 0 auto 30px auto;
+  }
+}
