@@ -41,30 +41,29 @@ export default function BranchesSection() {
 
       <div className="branches_container">
         {branches.map((branch, idx) => (
-          <motion.div
-            key={idx}
-            className="branch_card"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: idx * 0.2 }}
-            whileHover={{ scale: 1.03 }}
-          >
-            <video
-              className="branch_video"
-              src={branch.videoSrc}
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-            <div className="branch_info">
-              <h3 className="branch_name">{branch.title}</h3>
-              <Link href={branch.link} className="branch_btn">
-                معرفة المزيد
-              </Link>
-            </div>
-          </motion.div>
+          <Link key={idx} href={branch.link} className="branch_card_link">
+            <motion.div
+              className="branch_card"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: idx * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <video
+                className="branch_video"
+                src={branch.videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+              <div className="branch_info">
+                <h3 className="branch_name">{branch.title}</h3>
+                <span className="branch_btn">معرفة المزيد</span>
+              </div>
+            </motion.div>
+          </Link>
         ))}
       </div>
     </section>

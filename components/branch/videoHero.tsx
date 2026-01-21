@@ -14,6 +14,7 @@ export default function VideoHero({ videoSrc, title, subtitle, text }: VideoHero
   const [fadeOut, setFadeOut] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // fade-out بعد 10 ثواني
@@ -38,6 +39,14 @@ export default function VideoHero({ videoSrc, title, subtitle, text }: VideoHero
     }
   };
 
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+
+    const nextMuted = !videoRef.current.muted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+  };
+
   return (
     <section className="video_hero">
       {/* الفيديو */}
@@ -46,7 +55,7 @@ export default function VideoHero({ videoSrc, title, subtitle, text }: VideoHero
         src={videoSrc}
         autoPlay
         loop
-        muted
+        muted={isMuted}
         playsInline
         className="hero_video"
       />
@@ -78,6 +87,20 @@ export default function VideoHero({ videoSrc, title, subtitle, text }: VideoHero
           ) : (
             <svg width="24" height="24" fill="currentColor">
               <path d="M8 5v14l11-7L8 5z" />
+            </svg>
+          )}
+        </button>
+        <button onClick={toggleMute}>
+          {isMuted ? (
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M16.5 12L19 14.5l1.5-1.5L18 10.5l2.5-2.5-1.5-1.5L16.5 9l-2.5-2.5-1.5 1.5L15 10.5l-2.5 2.5 1.5 1.5L16.5 12z" />
+              <path d="M5 9v6h4l5 4V5L9 9H5z" />
+            </svg>
+          ) : (
+            <svg width="24" height="24" fill="currentColor">
+              <path d="M5 9v6h4l5 4V5L9 9H5z" />
+              <path d="M16 8.82a3 3 0 010 6.36" />
+              <path d="M18.5 6.5a6 6 0 010 11" />
             </svg>
           )}
         </button>

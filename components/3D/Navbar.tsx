@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import ThemeToggle from "../ThemeToggle";
@@ -8,6 +8,8 @@ import ThemeToggle from "../ThemeToggle";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [branchesOpen, setBranchesOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleLinkClick = () => {
     setOpen(false);
@@ -18,19 +20,47 @@ export default function Navbar() {
     setBranchesOpen(!branchesOpen);
   };
 
+  useEffect(() => {
+    if (!open) return;
+
+    const handleOutsideClick = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+      if (navRef.current?.contains(target)) return;
+      if (menuButtonRef.current?.contains(target)) return;
+      setOpen(false);
+      setBranchesOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
+  }, [open]);
+
   return (
     <header className="navbar">
       <div className="container">
         <div className="logo">مجموعة الظاهري</div>
 
         <button
+          ref={menuButtonRef}
           className={`menu_btn ${open ? "open" : ""}`}
           onClick={() => setOpen(!open)}
         >
           ☰
         </button>
 
-        <nav className={`nav_links ${open ? "active" : ""}`}>
+        <div
+          className={`nav_overlay ${open ? "active" : ""}`}
+          onClick={handleLinkClick}
+          aria-hidden="true"
+        ></div>
+
+        <nav ref={navRef} className={`nav_links ${open ? "active" : ""}`}>
           <Link href="/" onClick={handleLinkClick}>الرئيسية</Link>
           <Link href="/ceo" onClick={handleLinkClick}>عن رئيس المجموعة</Link>
 

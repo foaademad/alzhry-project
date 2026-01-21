@@ -69,6 +69,12 @@
   z-index:1;
 }
 
+.branch_card_link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
 .branch_card{
   position:relative;
   border-radius:25px;
